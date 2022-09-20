@@ -24,5 +24,24 @@ class TestClass:
         lucas = Funcionario(entrada, '11/11/2000', 20183)
         
         resultado = lucas.sobrenome() #when
+        assert resultado == esperado
 
+    def test_quando_decrescimo_salario_recebe_10000_deve_retornar_90000(self):
+        entrada_salario = 100000
+        entrada_nome = 'Paulo Bragança'
+        esperado = 90000
+
+        funcionario_teste = Funcionario(entrada_nome, '11/11/2000', entrada_salario)
+        funcionario_teste.decrescimo_salario()
+
+        resultado = funcionario_teste.salario
+        assert resultado == esperado
+
+    def test_quando_calcular_bonus_recebe_1000_deve_retornar_100(self):
+        entrada = 1000
+        esperado = 100
+
+        funcionario_teste = Funcionario('test', '11/1e1/2000', entrada)
+
+        resultado = funcionario_teste.calcular_bonus()
         assert resultado == esperado
