@@ -1,3 +1,5 @@
+import pytest
+from pytest import mark
 import sys
 sys.path.append("/Users/daianeklein/Documents/DS/python-development/tdd/alura-tdd/codigo")
 from bytebank import Funcionario
@@ -37,11 +39,21 @@ class TestClass:
         resultado = funcionario_teste.salario
         assert resultado == esperado
 
+    @mark.calcular_bonus
     def test_quando_calcular_bonus_recebe_1000_deve_retornar_100(self):
         entrada = 1000
         esperado = 100
 
-        funcionario_teste = Funcionario('test', '11/1e1/2000', entrada)
+        funcionario_teste = Funcionario('test', '11/11/2000', entrada)
 
         resultado = funcionario_teste.calcular_bonus()
         assert resultado == esperado
+    @mark.calcular_bonus
+    def test_quando_calcular_bonus_recebe_1000000_deve_retornar_exception(self):
+        with pytest.raises(Exception):
+            entrada = 1000000
+
+            funcionario_teste = Funcionario('test', '11/11/2000', entrada)
+
+            resultado = funcionario_teste.calcular_bonus()
+            assert resultado
