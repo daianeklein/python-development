@@ -1,4 +1,17 @@
+from multiprocessing.sharedctypes import Value
+
+
 url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
+url = " "
+
+# sanitizacao
+url = url.strip()
+
+# validacao
+if url == "":
+    raise ValueError('A URL está vazia')
+
+
 
 # Separa base e parâmetros
 indice_interrogacao = url.find('?')
